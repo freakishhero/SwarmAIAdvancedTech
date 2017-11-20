@@ -1,0 +1,16 @@
+﻿  main.cpp
+c:\users\freakish hero\desktop\directx\advancedtechswarmai\advancedtechswarmai\main.cpp(10): warning C4551: function call missing argument list
+  VBObject.cpp
+  Scene.cpp
+  c:\program files (x86)\windows kits\8.1\include\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\freakish hero\desktop\directx\advancedtechswarmai\advancedtechswarmai\scenedata.h(19): warning C4099: 'SceneData': type name first seen using 'class' now seen using 'struct'
+  c:\users\freakish hero\desktop\directx\advancedtechswarmai\advancedtechswarmai\scenedata.h(18): note: see declaration of 'SceneData'
+  GraphicsHandler.cpp
+  Application.cpp
+c:\users\freakish hero\desktop\directx\advancedtechswarmai\advancedtechswarmai\scene.h(6): warning C4099: 'SceneData': type name first seen using 'struct' now seen using 'class'
+  c:\users\freakish hero\desktop\directx\advancedtechswarmai\advancedtechswarmai\gameobject.h(9): note: see declaration of 'SceneData'
+c:\users\freakish hero\desktop\directx\advancedtechswarmai\advancedtechswarmai\application.cpp(154): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\freakish hero\desktop\directx\advancedtechswarmai\advancedtechswarmai\application.cpp(158): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  AdvancedTechSwarmAI.vcxproj -> C:\Users\Freakish Hero\Desktop\DirectX\AdvancedTechSwarmAI\x64\Debug\AdvancedTechSwarmAI.exe
+  AdvancedTechSwarmAI.vcxproj -> C:\Users\Freakish Hero\Desktop\DirectX\AdvancedTechSwarmAI\x64\Debug\AdvancedTechSwarmAI.pdb (Full PDB)
