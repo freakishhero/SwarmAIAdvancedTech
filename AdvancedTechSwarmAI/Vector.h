@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+#include <DirectXMath.h>
 
 struct Vector3
 {

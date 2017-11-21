@@ -27,4 +27,12 @@ void GameObject::Tick(SceneData* _SD)
 		m_velocity = _new_velocity;
 		m_position = _new_position;
 	}
+
+	
+	DirectX::XMMATRIX scale_matrix = XMMatrixScaling(m_scale.x, m_scale.y, m_scale.z);
+	m_rotation_matrix = XMMatrixRotationRollPitchYaw(m_pitch, m_yaw, m_roll);
+	DirectX::XMMATRIX translation_matrix = XMMatrixTranslation(m_position.x, m_position.y, m_position.z);
+	m_world_matrix = m_fudge * scale_matrix * m_rotation_matrix * translation_matrix;
+
+	m_acceleration = Vector3(0, 0, 0);
 }
