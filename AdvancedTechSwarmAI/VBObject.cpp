@@ -39,7 +39,7 @@ void VBObject::Shutdown()
 
 void VBObject::Tick(SceneData * _SD)
 {
-	using namespace DirectX;
+	/*using namespace DirectX;
 	XMVECTOR zaxis = XMVector3Normalize(XMVectorNegate(XMLoadFloat3(new XMFLOAT3(m_velocity.x, m_velocity.y, m_velocity.z))));
 	XMVECTOR yaxis = XMLoadFloat3(new XMFLOAT3(0.0f, 1.0f, 0.0f));
 	XMVECTOR xaxis = XMVector3Normalize(XMVector3Cross(yaxis, zaxis));
@@ -65,11 +65,11 @@ void VBObject::Tick(SceneData * _SD)
 	m_world_matrix = m_fudge * scale_matrix * m_rotation_matrix * translation_matrix;
 
 	
-	m_position += m_velocity;
+	m_position += m_velocity;*/
 	
 
 
-	//GameObject::Tick(_SD);
+	GameObject::Tick(_SD);
 }
 
 void VBObject::Draw(ID3D11DeviceContext* deviceContext)

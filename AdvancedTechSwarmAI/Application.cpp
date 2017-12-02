@@ -165,6 +165,7 @@ bool Application::Frame()
 		return false;
 	}
 
+	m_Graphics->getShader()->setWorldMatrix(m_Scene->getMatrices());
 	// Do the frame processing for the graphics object.
 	result = m_Scene->Tick();
 	if (!result)

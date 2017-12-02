@@ -131,6 +131,11 @@ Camera * GraphicsHandler::getCamera()
 	return m_Camera;
 }
 
+Shader * GraphicsHandler::getShader()
+{
+	return m_shader;
+}
+
 
 bool GraphicsHandler::Render()
 {

@@ -1,6 +1,7 @@
 #pragma once
 #include <d3d11.h>
 #include <vector>
+#include <DirectXMath.h>
 
 class GameObject;
 class SceneData;
@@ -13,8 +14,8 @@ public:
 	virtual ~Scene();
 
 	bool Tick();
-
 	bool Draw(ID3D11DeviceContext* context);
+	DirectX::XMMATRIX getMatrices();
 
 private:
 	SceneData* m_SceneData;

@@ -17,6 +17,7 @@ public:
 	bool Initialize(ID3D11Device*, HWND);
 	void Shutdown();
 	bool Render(ID3D11DeviceContext*, int, XMMATRIX, XMMATRIX, XMMATRIX);
+	void setWorldMatrix(XMMATRIX matrix) { world_matrix = matrix; }
 private:
 	struct MatrixBufferType
 	{
@@ -24,6 +25,8 @@ private:
 		XMMATRIX view;
 		XMMATRIX projection;
 	};
+
+	XMMATRIX world_matrix;
 	
 	bool InitializeShader(ID3D11Device*, HWND, WCHAR*, WCHAR*);
 	void ShutdownShader();

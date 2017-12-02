@@ -25,6 +25,7 @@ public:
 	bool Frame();
 	Direct3D* GetDirect3D();
 	Camera* getCamera();
+	Shader* getShader();
 
 private:
 	bool Render();

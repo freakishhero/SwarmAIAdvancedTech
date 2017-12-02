@@ -1,10 +1,13 @@
-﻿Build started 21/11/2017 18:45:44.
-     1>Project "D:\SwarmAIAdvancedTech\AdvancedTechSwarmAI\AdvancedTechSwarmAI.vcxproj" on node 2 (Build target(s)).
+﻿Build started 02/12/2017 18:27:47.
+     1>Project "D:\Work\SwarmAIAdvancedTech\AdvancedTechSwarmAI\AdvancedTechSwarmAI.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt VBObject.cpp
-         VBObject.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt Scene.cpp
+         Scene.cpp
+         c:\program files (x86)\windows kits\8.1\include\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+     1>d:\work\swarmaiadvancedtech\advancedtechswarmai\scenedata.h(19): warning C4099: 'SceneData': type name first seen using 'class' now seen using 'struct'
+         d:\work\swarmaiadvancedtech\advancedtechswarmai\scenedata.h(18): note: see declaration of 'SceneData'
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\SwarmAIAdvancedTech\x64\Debug\AdvancedTechSwarmAI.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\SwarmAIAdvancedTech\x64\Debug\AdvancedTechSwarmAI.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\SwarmAIAdvancedTech\x64\Debug\AdvancedTechSwarmAI.lib" /MACHINE:X64 x64\Debug\Camera.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Work\SwarmAIAdvancedTech\x64\Debug\AdvancedTechSwarmAI.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\Work\SwarmAIAdvancedTech\x64\Debug\AdvancedTechSwarmAI.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Work\SwarmAIAdvancedTech\x64\Debug\AdvancedTechSwarmAI.lib" /MACHINE:X64 x64\Debug\Camera.obj
          x64\Debug\Direct3D.obj
          x64\Debug\GameObject.obj
          x64\Debug\GraphicsHandler.obj
@@ -14,9 +17,9 @@
          x64\Debug\Shader.obj
          x64\Debug\Application.obj
          x64\Debug\VBObject.obj
-         AdvancedTechSwarmAI.vcxproj -> D:\SwarmAIAdvancedTech\x64\Debug\AdvancedTechSwarmAI.exe
-     1>Done Building Project "D:\SwarmAIAdvancedTech\AdvancedTechSwarmAI\AdvancedTechSwarmAI.vcxproj" (Build target(s)).
+         AdvancedTechSwarmAI.vcxproj -> D:\Work\SwarmAIAdvancedTech\x64\Debug\AdvancedTechSwarmAI.exe
+     1>Done Building Project "D:\Work\SwarmAIAdvancedTech\AdvancedTechSwarmAI\AdvancedTechSwarmAI.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.35
+Time Elapsed 00:00:01.07

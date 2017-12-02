@@ -26,6 +26,8 @@ public:
 	Vector3 GetVelocity() { return m_velocity; }
 	Vector3 GetAcceleration() { return m_acceleration; }
 
+	XMMATRIX getMatrix() { return m_world_matrix; }
+
 	float GetYaw() { return m_yaw; }
 	float GetPitch() { return m_pitch; }
 	float GetRoll() { return m_roll; }
