@@ -4,8 +4,8 @@
 #include <DirectXMath.h>
 
 class GameObject;
-class SceneData;
 class VBObject;
+struct SceneData;
 
 class Scene
 {
@@ -16,6 +16,9 @@ public:
 	bool Tick();
 	bool Draw(ID3D11DeviceContext* context);
 	DirectX::XMMATRIX getMatrices();
+
+protected:
+	DWORD m_playTime;
 
 private:
 	SceneData* m_SceneData;

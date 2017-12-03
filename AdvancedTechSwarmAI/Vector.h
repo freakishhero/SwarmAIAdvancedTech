@@ -14,17 +14,17 @@ struct Vector3
 
 	inline Vector3 operator + (const Vector3& _vector3) const
 	{
-		return Vector3(x + _vector3.y, y + _vector3.y, z + _vector3.y);
+		return Vector3(x + _vector3.x, y + _vector3.y, z + _vector3.z);
 	}
 
 	inline Vector3 operator += (const Vector3& _vector3) const
 	{
-		return Vector3(x + _vector3.y, y + _vector3.y, z + _vector3.y);
+		return Vector3(x + _vector3.x, y + _vector3.y, z + _vector3.z);
 	}
 
 	inline Vector3 operator - (const Vector3& _vector3) const
 	{
-		return Vector3(x - _vector3.y, y - _vector3.y, z - _vector3.y);
+		return Vector3(x - _vector3.x, y - _vector3.y, z - _vector3.z);
 	}
 
 

@@ -151,11 +151,11 @@ bool Application::Frame()
 	}
 	if (m_Input->IsKeyDown(VK_LEFT))
 	{
-		cam->SetRotation(cam->GetRotation().x, cam->GetRotation().y + 1.0, cam->GetRotation().z);
+		cam->SetPosition(cam->GetPosition().x - 1.0f, cam->GetPosition().y , cam->GetPosition().z);
 	}
 	if (m_Input->IsKeyDown(VK_RIGHT))
 	{
-		cam->SetRotation(cam->GetRotation().x, cam->GetRotation().y - 1.0, cam->GetRotation().z);
+		cam->SetPosition(cam->GetPosition().x + 1.0f, cam->GetPosition().y, cam->GetPosition().z);
 	}
 
 	// Do the frame processing for the graphics object.

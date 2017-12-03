@@ -39,36 +39,6 @@ void VBObject::Shutdown()
 
 void VBObject::Tick(SceneData * _SD)
 {
-	/*using namespace DirectX;
-	XMVECTOR zaxis = XMVector3Normalize(XMVectorNegate(XMLoadFloat3(new XMFLOAT3(m_velocity.x, m_velocity.y, m_velocity.z))));
-	XMVECTOR yaxis = XMLoadFloat3(new XMFLOAT3(0.0f, 1.0f, 0.0f));
-	XMVECTOR xaxis = XMVector3Normalize(XMVector3Cross(yaxis, zaxis));
-
-	XMMATRIX R;
-	XMFLOAT4X4 r;
-	XMStoreFloat4x4(&r, R);
-
-	XMStoreFloat3(reinterpret_cast<XMFLOAT3*> (&r._11), xaxis);
-	XMStoreFloat3(reinterpret_cast<XMFLOAT3*> (&r._21), yaxis);
-	XMStoreFloat3(reinterpret_cast<XMFLOAT3*> (&r._31), zaxis);
-
-	r._14 = r._24 = r._34 = 0.f;
-	r._41 = m_position.x;
-	r._42 = m_position.y;
-	r._44 = m_position.z;
-
-	R = XMLoadFloat4x4(&r);
-	
-	DirectX::XMMATRIX scale_matrix = XMMatrixScaling(m_scale.x, m_scale.y, m_scale.z);
-	DirectX::XMMATRIX rotaton_translation_matrix = R;
-	DirectX::XMMATRIX translation_matrix = XMMatrixTranslation(m_position.x, m_position.y, m_position.z);
-	m_world_matrix = m_fudge * scale_matrix * m_rotation_matrix * translation_matrix;
-
-	
-	m_position += m_velocity;*/
-	
-
-
 	GameObject::Tick(_SD);
 }
 

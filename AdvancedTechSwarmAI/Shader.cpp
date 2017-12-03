@@ -45,14 +45,7 @@ bool Shader::Render(ID3D11DeviceContext* deviceContext, int indexCount, XMMATRIX
 {
 	bool result;
 
-
 	// Set the shader parameters that it will use for rendering.
-	/*for (auto& gameobject : scene->getGameObjects())
-		worldMatrix  *= gameObject->getMatrix();
-	
-		XMMATRIXTRANSPOSE(worldMatrix);
-	*/
-	
 	worldMatrix = world_matrix;
 	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix);
 	if (!result)
