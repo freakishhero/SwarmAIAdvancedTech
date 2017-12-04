@@ -28,7 +28,6 @@ void GameObject::Tick(SceneData* _SD)
 		m_position = _new_position;
 	}
 
-	
 	DirectX::XMMATRIX scale_matrix = XMMatrixScaling(m_scale.x, m_scale.y, m_scale.z);
 	m_rotation_matrix = XMMatrixRotationRollPitchYaw(m_pitch, m_yaw, m_roll);
 	DirectX::XMMATRIX translation_matrix = XMMatrixTranslation(m_position.x, m_position.y, m_position.z);

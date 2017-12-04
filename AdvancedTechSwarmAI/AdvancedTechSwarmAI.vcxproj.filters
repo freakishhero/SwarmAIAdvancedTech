@@ -88,11 +88,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="color.vs">
-      <Filter>Header Files</Filter>
-    </None>
     <None Include="color.ps">
       <Filter>Header Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="color.vs.hlsl">
+      <Filter>Header Files</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

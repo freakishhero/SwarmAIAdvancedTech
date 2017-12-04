@@ -7,7 +7,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pScmdline,
 
 	//Create a pointer to the application
 	application = std::make_unique<Application>();
-	if (!system)
+	if (!application)
 	{
 		return 0;
 	}

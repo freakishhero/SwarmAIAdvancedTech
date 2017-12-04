@@ -29,10 +29,10 @@ bool Scene::Tick()
 
 	for (auto& gameObject : m_GameObjects)
 	{
-		if (gameObject->GetVelocity().x < 0.8f)
-		{
-			gameObject->SetVelocity(Vector3(5, 0, 0));
-		}
+		//if (gameObject->GetVelocity().x < 0.8f)
+		//{
+		//	gameObject->SetVelocity(Vector3(5, 0, 0));
+		//}
 		
 		gameObject->Tick(m_SceneData);
 		
