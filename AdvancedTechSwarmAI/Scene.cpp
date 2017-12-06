@@ -11,7 +11,7 @@ Scene::Scene(ID3D11Device * _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance)
 
 	m_SceneData = new SceneData();
 
-	m_vbo = new VBObject;
+	m_vbo = new VBObject();
 	m_vbo->Initialize(_pd3dDevice);
 	m_GameObjects.push_back(m_vbo);
 	m_vbo->SetPosition(Vector3(0, 0, 0));

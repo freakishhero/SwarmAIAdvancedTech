@@ -77,7 +77,9 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 	m_vertexCount = 4;
 
 	// Set the number of instances in the array.
-	m_instanceCount = 3;
+	m_instanceCount = 100000;
+
+	//BREAKS IF INSTANCE COUNT IS GREATER THAN
 
 	// Create the vertex array.
 	vertices = new VertexType[m_vertexCount];
@@ -103,16 +105,6 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 	vertices[2].position = XMFLOAT3(1.0f, -1.0f, 0.0f);  // Bottom right.
 	vertices[2].color = XMFLOAT4(2.0f, 0.2f, 0.2f, 1.0f);
 
-
-	auto x = 2;
-	for (auto i = 0; i < m_instanceCount; i++)
-	{
-		x += 2.0f;
-		// Load the instance array with data.
-		instances.push_back(InstanceType());
-		instances[i].instancePosition = Vector3(x, 0.0f, 0.0f);
-	}
-
 	// Set up the description of the static vertex buffer.
 	vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
 	vertexBufferDesc.ByteWidth = sizeof(VertexType) * m_vertexCount;
@@ -133,6 +125,25 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 		return false;
 	}
 
+	float x = 0;
+	float y = 0;
+	int iterator = 0;
+
+	for (int i = 0; i < m_instanceCount; i++)
+	{
+		x += 2.0f;
+		iterator++;
+		// Load the instance array with data.
+		instances.push_back(InstanceType());
+		instances[i].instancePosition = Vector3(x, y, 0.0f);
+		if (iterator == 300)
+		{
+			iterator = 0;
+			y += 2;
+			x = 0;
+		}
+	}
+
 	// Set up the description of the instance buffer.
 	instanceBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
 	instanceBufferDesc.ByteWidth = sizeof(InstanceType) * m_instanceCount;
@@ -142,12 +153,13 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 	instanceBufferDesc.StructureByteStride = 0;
 
 	// Give the subresource structure a pointer to the instance data.
-	instanceData.pSysMem = &instances;
+	/*instanceData.pSysMem = &instances;
 	instanceData.SysMemPitch = 0;
-	instanceData.SysMemSlicePitch = 0;
+	instanceData.SysMemSlicePitch = 0;*/
 
 	// Create the instance buffer.
-	result = device->CreateBuffer(&instanceBufferDesc, &instanceData, &m_instanceBuffer);
+	//result = device->CreateBuffer(&instanceBufferDesc, &instanceData, &m_instanceBuffer);
+	result = device->CreateBuffer(&instanceBufferDesc, 0, &m_instanceBuffer);
 	if (FAILED(result))
 	{
 		return false;
@@ -190,13 +202,15 @@ void VBObject::RenderBuffers(ID3D11DeviceContext* deviceContext)
 	deviceContext->Map(m_instanceBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedData);
 	InstanceType* dataView = reinterpret_cast<InstanceType*>(mappedData.pData);
 
-	for (auto i = 0; i < instances.size(); i++)
+	for (auto i = 0; i < m_instanceCount; i++)
 	{
-		auto position = instances[i];
-		position.instancePosition.z += 10.f;
+		//auto position = instances[i];
+		//position.instancePosition.z += 10.f;
 
 
-		dataView[i] = position;
+		//dataView[i] = position;
+		dataView[i] = instances[i];
+		int x = 0;
 	}
 	deviceContext->Unmap(m_instanceBuffer, 0);
 
