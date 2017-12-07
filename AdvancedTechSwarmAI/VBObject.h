@@ -10,6 +10,14 @@
 
 using namespace DirectX;
 
+struct InstanceType
+{
+	Vector3 instancePosition;
+	Vector3 instanceRotation;
+	Vector3 instanceScale;
+	DirectX::XMMATRIX world_matrix;
+	DirectX::XMMATRIX fudge;
+};
 
 class VBObject : public GameObject
 {
@@ -24,6 +32,7 @@ public:
 	void Draw(ID3D11DeviceContext*);
 	int GetVertexCount();
 	int GetInstanceCount();
+	InstanceType GetInstanceIndex(const unsigned short index);
 
 private:
 	bool InitializeBuffers(ID3D11Device*);
@@ -36,15 +45,11 @@ private:
 		XMFLOAT4 color;
 	};
 
-	struct InstanceType
-	{
-		Vector3 instancePosition;
-	};
 
 
 	ID3D11Buffer* m_vertexBuffer;
 	ID3D11Buffer* m_instanceBuffer;
-	std::vector<InstanceType> instances;
+	std::vector<InstanceType> m_instances;
 	D3D11_SUBRESOURCE_DATA vertexData, instanceData;
 	int m_vertexCount;
 	int m_instanceCount;

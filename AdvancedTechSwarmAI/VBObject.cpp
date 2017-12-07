@@ -1,7 +1,5 @@
 #include "VBObject.h"
 
-
-
 VBObject::VBObject()
 {
 	m_vertexBuffer = 0;
@@ -42,6 +40,10 @@ int VBObject::GetInstanceCount()
 	return m_instanceCount;
 }
 
+InstanceType VBObject::GetInstanceIndex(const unsigned short index)
+{
+	return m_instances[index];
+}
 
 void VBObject::Shutdown()
 {
@@ -53,6 +55,14 @@ void VBObject::Shutdown()
 
 void VBObject::Tick(SceneData * _SD)
 {
+	/*for (int i = 0; i < m_instanceCount; i++)
+	{
+		DirectX::XMMATRIX scale_matrix = XMMatrixScaling(m_instances[i].instanceScale.x, m_instances[i].instanceScale.y, m_instances[i].instanceScale.z);
+		m_rotation_matrix = XMMatrixRotationRollPitchYaw(m_instances[i].instanceRotation.x, m_instances[i].instanceRotation.y, m_instances[i].instanceRotation.z);
+		DirectX::XMMATRIX translation_matrix = XMMatrixTranslation(m_instances[i].instancePosition.x, m_instances[i].instancePosition.y, m_instances[i].instancePosition.z);
+		m_instances[i].world_matrix = scale_matrix * m_rotation_matrix * translation_matrix;
+	}*/
+	
 	GameObject::Tick(_SD);
 }
 
@@ -131,15 +141,20 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 
 	for (int i = 0; i < m_instanceCount; i++)
 	{
-		x += 2.0f;
+		x += 4.0f;
 		iterator++;
 		// Load the instance array with data.
-		instances.push_back(InstanceType());
-		instances[i].instancePosition = Vector3(x, y, 0.0f);
-		if (iterator == 300)
+		m_instances.push_back(InstanceType());
+		m_instances[i].instancePosition = Vector3(x, y, 0.0f);
+		m_instances[i].instanceRotation = Vector3(0, 0, 0);
+		m_instances[i].instanceScale = Vector3(1, 1, 1);
+		m_instances[i].fudge = XMMatrixIdentity();
+		m_instances[i].world_matrix = XMMatrixIdentity();
+
+		if (iterator == 500)
 		{
 			iterator = 0;
-			y += 2;
+			y += 4;
 			x = 0;
 		}
 	}
@@ -209,7 +224,7 @@ void VBObject::RenderBuffers(ID3D11DeviceContext* deviceContext)
 
 
 		//dataView[i] = position;
-		dataView[i] = instances[i];
+		dataView[i] = m_instances[i];
 		int x = 0;
 	}
 	deviceContext->Unmap(m_instanceBuffer, 0);

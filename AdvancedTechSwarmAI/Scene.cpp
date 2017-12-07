@@ -29,15 +29,12 @@ bool Scene::Tick()
 
 	for (auto& gameObject : m_GameObjects)
 	{
-		//if (gameObject->GetVelocity().x < 0.8f)
-		//{
-		//	gameObject->SetVelocity(Vector3(5, 0, 0));
-		//}
-		
 		gameObject->Tick(m_SceneData);
-		
-		//gameObject->SetScale(Vector3(gameObject->GetScale().x, gameObject->GetScale().y + 0.001f, gameObject->GetScale().z));
-		//gameObject->SetRoll(gameObject->GetRoll() + 0.01f);
+	}
+
+	for (int i = 0; i < m_vbo->GetInstanceCount(); i++)
+	{
+		m_vbo->GetInstanceIndex(i).instancePosition = Vector3(10, 10, 10);
 	}
 	Draw(m_pd3dImmediateContext);
 	return true;
@@ -59,6 +56,11 @@ XMMATRIX Scene::getMatrices()
 	{
 		matrix *= gameObject->GetWorldMatrix();
 	}
+
+	//for (int i = 0; i < m_vbo->GetInstanceCount(); i++)
+	//{
+	//	matrix *= m_vbo->GetInstanceIndex(i).world_matrix;
+	//}
 	return matrix;
 }
 
