@@ -49,12 +49,12 @@ struct Vector3
 		return _vector3.x*x + _vector3.y*y + _vector3.z*z;
 	}
 
-	inline float Magnitude(const Vector3& _vector3)
+	static inline float Magnitude(const Vector3& _vector3)
 	{
 		return sqrt((_vector3.x * _vector3.x) + (_vector3.y * _vector3.y) + (_vector3.z * _vector3.z));
 	}
 
-	inline float Distance(const Vector3& vector1, const Vector3& vector2)
+	static inline float Distance(const Vector3& vector1, const Vector3& vector2)
 	{
 		float _z_difference = vector1.z - vector2.z;
 		float _y_difference = vector1.y - vector2.y;

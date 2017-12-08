@@ -21,17 +21,17 @@ public:
 	virtual void Draw(ID3D11DeviceContext* _DD) = 0;
 
 	//Getters
-	Vector3 GetPosition() { return m_position; }
-	Vector3 GetScale() { return m_scale; }
-	Vector3 GetVelocity() { return m_velocity; }
-	Vector3 GetAcceleration() { return m_acceleration; }
+	Vector3 GetPosition() const { return m_position; }
+	Vector3 GetScale() const { return m_scale; }
+	Vector3 GetVelocity() const { return m_velocity; }
+	Vector3 GetAcceleration() const { return m_acceleration; }
 
-	XMMATRIX GetWorldMatrix() { return m_world_matrix; }
+	XMMATRIX GetWorldMatrix() const  { return m_world_matrix; }
 
-	float GetYaw() { return m_yaw; }
-	float GetPitch() { return m_pitch; }
-	float GetRoll() { return m_roll; }
-	float GetDrag() { return m_drag; }
+	float GetYaw() const { return m_yaw; }
+	float GetPitch() const { return m_pitch; }
+	float GetRoll() const { return m_roll; }
+	float GetDrag()const { return m_drag; }
 
 	bool IsPhysicsApplied() { return m_applyPhysics; }
 

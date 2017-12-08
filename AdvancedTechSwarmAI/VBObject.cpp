@@ -29,20 +29,25 @@ bool VBObject::Initialize(ID3D11Device* device)
 	return true;
 }
 
-int VBObject::GetVertexCount()
+int VBObject::GetVertexCount() const
 {
 	return m_vertexCount;
 }
 
 
-int VBObject::GetInstanceCount()
+int VBObject::GetInstanceCount() const
 {
 	return m_instanceCount;
 }
 
-InstanceType VBObject::GetInstanceIndex(const unsigned short index)
+InstanceType* VBObject::GetInstanceIndex(const unsigned short index)
 {
 	return m_instances[index];
+}
+
+std::vector<InstanceType*> VBObject::GetInstances()
+{
+	return m_instances;
 }
 
 void VBObject::Shutdown()
@@ -55,14 +60,14 @@ void VBObject::Shutdown()
 
 void VBObject::Tick(SceneData * _SD)
 {
-	/*for (int i = 0; i < m_instanceCount; i++)
+	if (m_applyPhysics)
 	{
-		DirectX::XMMATRIX scale_matrix = XMMatrixScaling(m_instances[i].instanceScale.x, m_instances[i].instanceScale.y, m_instances[i].instanceScale.z);
-		m_rotation_matrix = XMMatrixRotationRollPitchYaw(m_instances[i].instanceRotation.x, m_instances[i].instanceRotation.y, m_instances[i].instanceRotation.z);
-		DirectX::XMMATRIX translation_matrix = XMMatrixTranslation(m_instances[i].instancePosition.x, m_instances[i].instancePosition.y, m_instances[i].instancePosition.z);
-		m_instances[i].world_matrix = scale_matrix * m_rotation_matrix * translation_matrix;
-	}*/
-	
+		Vector3 _new_velocity = m_velocity + (m_acceleration - m_velocity * m_drag) * _SD->m_deltaTime;
+		Vector3 _new_position = m_position + m_velocity * _SD->m_deltaTime;
+		m_velocity = _new_velocity;
+		m_position = _new_position;
+	}
+
 	GameObject::Tick(_SD);
 }
 
@@ -87,7 +92,7 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 	m_vertexCount = 4;
 
 	// Set the number of instances in the array.
-	m_instanceCount = 100000;
+	m_instanceCount = 10000;
 
 	//BREAKS IF INSTANCE COUNT IS GREATER THAN
 
@@ -97,13 +102,6 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 	{
 		return false;
 	}
-
-	//// Create the instance array.
-	//instances = new InstanceType[m_instanceCount];
-	//if (!instances)
-	//{
-	//	return false;
-	//}
 
 	// Load the vertex array with data.
 	vertices[0].position = XMFLOAT3(-1.0f, -1.0f, 0.0f);  // Bottom left.
@@ -143,15 +141,15 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 	{
 		x += 4.0f;
 		iterator++;
-		// Load the instance array with data.
-		m_instances.push_back(InstanceType());
-		m_instances[i].instancePosition = Vector3(x, y, 0.0f);
-		m_instances[i].instanceRotation = Vector3(0, 0, 0);
-		m_instances[i].instanceScale = Vector3(1, 1, 1);
-		m_instances[i].fudge = XMMatrixIdentity();
-		m_instances[i].world_matrix = XMMatrixIdentity();
+				// Load the instance array with data.
+		m_instances.push_back(new InstanceType());
+		m_instances[i]->instancePosition = Vector3(x, y, 0.0f);
+		m_instances[i]->instanceRotation = Vector3(0, 0, 0);
+		m_instances[i]->instanceScale = Vector3(1, 1, 1);
+		m_instances[i]->fudge = XMMatrixIdentity();
+		m_instances[i]->world_matrix = XMMatrixIdentity();
 
-		if (iterator == 500)
+		if (iterator == 100)
 		{
 			iterator = 0;
 			y += 4;
@@ -168,21 +166,16 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 	instanceBufferDesc.StructureByteStride = 0;
 
 	// Give the subresource structure a pointer to the instance data.
-	/*instanceData.pSysMem = &instances;
+	instanceData.pSysMem = &m_instances;
 	instanceData.SysMemPitch = 0;
-	instanceData.SysMemSlicePitch = 0;*/
+	instanceData.SysMemSlicePitch = 0;
 
 	// Create the instance buffer.
-	//result = device->CreateBuffer(&instanceBufferDesc, &instanceData, &m_instanceBuffer);
 	result = device->CreateBuffer(&instanceBufferDesc, 0, &m_instanceBuffer);
 	if (FAILED(result))
 	{
 		return false;
 	}
-
-	// Release the instance array now that the instance buffer has been created and loaded.
-	//delete[] instances;
-	//instances = 0;
 
 	// Release the arrays now that the vertex and index buffers have been created and loaded.
 	delete[] vertices;
@@ -221,11 +214,8 @@ void VBObject::RenderBuffers(ID3D11DeviceContext* deviceContext)
 	{
 		//auto position = instances[i];
 		//position.instancePosition.z += 10.f;
-
-
 		//dataView[i] = position;
-		dataView[i] = m_instances[i];
-		int x = 0;
+		dataView[i] = *m_instances[i];
 	}
 	deviceContext->Unmap(m_instanceBuffer, 0);
 

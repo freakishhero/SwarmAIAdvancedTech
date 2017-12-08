@@ -30,9 +30,10 @@ public:
 	void Shutdown();
 	void Tick(SceneData* _SD);
 	void Draw(ID3D11DeviceContext*);
-	int GetVertexCount();
-	int GetInstanceCount();
-	InstanceType GetInstanceIndex(const unsigned short index);
+	int GetVertexCount() const;
+	int GetInstanceCount() const;
+	InstanceType* GetInstanceIndex(const unsigned short index);
+	std::vector<InstanceType*> GetInstances();
 
 private:
 	bool InitializeBuffers(ID3D11Device*);
@@ -45,16 +46,12 @@ private:
 		XMFLOAT4 color;
 	};
 
-
-
 	ID3D11Buffer* m_vertexBuffer;
 	ID3D11Buffer* m_instanceBuffer;
-	std::vector<InstanceType> m_instances;
+	std::vector<InstanceType*> m_instances;
 	D3D11_SUBRESOURCE_DATA vertexData, instanceData;
 	int m_vertexCount;
 	int m_instanceCount;
-
-
 };
 
 #endif

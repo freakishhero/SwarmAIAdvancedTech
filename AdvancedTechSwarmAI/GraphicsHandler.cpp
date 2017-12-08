@@ -52,7 +52,7 @@ bool GraphicsHandler::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Set the initial position of the camera.
-	m_Camera->SetPosition(0.0f, 0.0f, -5.0f);
+	m_Camera->SetPosition(125.0f, 90.0f, -250.0f);
 
 	if (!result)
 	{
@@ -154,7 +154,7 @@ bool GraphicsHandler::Render()
 	m_Direct3D->GetProjectionMatrix(projectionMatrix);
 
 	// Render the model using the color shader.
-	result = m_shader->Render(m_Direct3D->GetDeviceContext(), 3, 100000, worldMatrix, viewMatrix,
+	result = m_shader->Render(m_Direct3D->GetDeviceContext(), 3, 10000, worldMatrix, viewMatrix,
 		projectionMatrix);
 	if (!result)
 	{
