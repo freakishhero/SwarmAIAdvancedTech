@@ -1,15 +1,40 @@
-﻿  GameObject.cpp
-  C:\Program Files (x86)\Windows Kits\8.1\Include\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  GraphicsHandler.cpp
-  main.cpp
-main.cpp(10): warning C4551: function call missing argument list
-  Scene.cpp
-c:\users\freakish hero\desktop\directx\advancedtechswarmai\advancedtechswarmai\GameObject.h(9): warning C4099: 'SceneData': type name first seen using 'class' now seen using 'struct'
-  c:\users\freakish hero\desktop\directx\advancedtechswarmai\advancedtechswarmai\Scene.h(6): note: see declaration of 'SceneData'
-  Application.cpp
-c:\users\freakish hero\desktop\directx\advancedtechswarmai\advancedtechswarmai\Scene.h(6): warning C4099: 'SceneData': type name first seen using 'struct' now seen using 'class'
-  c:\users\freakish hero\desktop\directx\advancedtechswarmai\advancedtechswarmai\GameObject.h(9): note: see declaration of 'SceneData'
-  VBObject.cpp
-  Generating code
-c:\users\freakish hero\desktop\directx\advancedtechswarmai\advancedtechswarmai\vbobject.cpp : fatal error C1083: Cannot open compiler intermediate file: 'C:\Users\Freakish Hero\Desktop\DirectX\AdvancedTechSwarmAI\x64\Release\AdvancedTechSwarmAI.ipdb': Permission denied
-LINK : fatal error LNK1257: code generation failed
+﻿Build started 09/12/2017 20:15:04.
+     1>Project "D:\SwarmAIAdvancedTech\AdvancedTechSwarmAI\AdvancedTechSwarmAI.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Release\\" /Fd"x64\Release\vc140.pdb" /Gd /TP /errorReport:prompt BoidManager.cpp Camera.cpp Direct3D.cpp GameObject.cpp GraphicsHandler.cpp InputHandler.cpp main.cpp Scene.cpp Shader.cpp Application.cpp VBObject.cpp
+         BoidManager.cpp
+         Camera.cpp
+         Direct3D.cpp
+         GameObject.cpp
+         C:\Program Files (x86)\Windows Kits\8.1\Include\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+         GraphicsHandler.cpp
+         InputHandler.cpp
+         main.cpp
+         Scene.cpp
+         C:\Program Files (x86)\Windows Kits\8.1\Include\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+         Shader.cpp
+     1>Shader.cpp(72): warning C4101: 'samplerDesc': unreferenced local variable
+         Application.cpp
+         VBObject.cpp
+         C:\Program Files (x86)\Windows Kits\8.1\Include\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\SwarmAIAdvancedTech\x64\Release\AdvancedTechSwarmAI.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\SwarmAIAdvancedTech\x64\Release\AdvancedTechSwarmAI.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\SwarmAIAdvancedTech\x64\Release\AdvancedTechSwarmAI.lib" /MACHINE:X64 x64\Release\BoidManager.obj
+         x64\Release\Camera.obj
+         x64\Release\Direct3D.obj
+         x64\Release\GameObject.obj
+         x64\Release\GraphicsHandler.obj
+         x64\Release\InputHandler.obj
+         x64\Release\main.obj
+         x64\Release\Scene.obj
+         x64\Release\Shader.obj
+         x64\Release\Application.obj
+         x64\Release\VBObject.obj
+         Generating code
+         All 555 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+         Finished generating code
+         AdvancedTechSwarmAI.vcxproj -> D:\SwarmAIAdvancedTech\x64\Release\AdvancedTechSwarmAI.exe
+     1>Done Building Project "D:\SwarmAIAdvancedTech\AdvancedTechSwarmAI\AdvancedTechSwarmAI.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:06.98

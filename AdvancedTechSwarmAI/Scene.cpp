@@ -34,10 +34,21 @@ bool Scene::Tick()
 
 	for (int i = 0; i < m_vbo->GetInstanceCount(); i++)
 	{
-		if(i % 2)
+		for (auto& boid : m_vbo->GetInstances())
+		{
+			if (boid != m_vbo->GetInstances()[i])
+			{
+				if (fabs(Vector3::Distance(boid->instancePosition, m_vbo->GetInstances()[i]->instancePosition) < 0.001))
+				{
+					boid->instancePosition = (boid->instancePosition + m_vbo->GetInstances()[i]->instancePosition * m_SceneData->m_deltaTime);
+				}
+			}
+		}
+		/*if(i % 2)
 		m_vbo->GetInstanceIndex(i)->instancePosition = Vector3(m_vbo->GetInstanceIndex(i)->instancePosition.x + 0.1, m_vbo->GetInstanceIndex(i)->instancePosition.y, m_vbo->GetInstanceIndex(i)->instancePosition.z);
 		else
-			m_vbo->GetInstanceIndex(i)->instancePosition = Vector3(m_vbo->GetInstanceIndex(i)->instancePosition.x - 0.1, m_vbo->GetInstanceIndex(i)->instancePosition.y, m_vbo->GetInstanceIndex(i)->instancePosition.z);
+		m_vbo->GetInstanceIndex(i)->instancePosition = Vector3(m_vbo->GetInstanceIndex(i)->instancePosition.x - 0.1, m_vbo->GetInstanceIndex(i)->instancePosition.y, m_vbo->GetInstanceIndex(i)->instancePosition.z);
+		*/
 	}
 
 	Draw(m_pd3dImmediateContext);

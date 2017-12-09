@@ -1,4 +1,5 @@
 #include "VBObject.h"
+#include "SceneData.h"
 
 VBObject::VBObject()
 {
@@ -92,7 +93,7 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 	m_vertexCount = 4;
 
 	// Set the number of instances in the array.
-	m_instanceCount = 10000;
+	m_instanceCount = 100;
 
 	//BREAKS IF INSTANCE COUNT IS GREATER THAN
 
