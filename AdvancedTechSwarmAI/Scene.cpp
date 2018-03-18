@@ -2,6 +2,7 @@
 #include "SceneData.h"
 #include "VBObject.h"
 #include <DirectXMath.h>
+#include <time.h>
 
 Scene::Scene(ID3D11Device * _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance)
 {
@@ -24,7 +25,7 @@ Scene::~Scene()
 bool Scene::Tick()
 {
 	DWORD currentTime = GetTickCount();
-	m_SceneData->m_deltaTime = min((float)(currentTime - m_playTime) / 1000.0f, 0.1f);
+	m_SceneData->m_deltaTime = min((float)(currentTime - m_play Time) / 1000.0f, 0.1f);
 	m_playTime = currentTime;
 
 	for (auto& gameObject : m_GameObjects)
@@ -34,21 +35,11 @@ bool Scene::Tick()
 
 	for (int i = 0; i < m_vbo->GetInstanceCount(); i++)
 	{
-		for (auto& boid : m_vbo->GetInstances())
-		{
-			if (boid != m_vbo->GetInstances()[i])
-			{
-				if (fabs(Vector3::Distance(boid->instancePosition, m_vbo->GetInstances()[i]->instancePosition) < 0.001))
-				{
-					boid->instancePosition = (boid->instancePosition + m_vbo->GetInstances()[i]->instancePosition * m_SceneData->m_deltaTime);
-				}
-			}
-		}
-		/*if(i % 2)
+		if(i % 2)
 		m_vbo->GetInstanceIndex(i)->instancePosition = Vector3(m_vbo->GetInstanceIndex(i)->instancePosition.x + 0.1, m_vbo->GetInstanceIndex(i)->instancePosition.y, m_vbo->GetInstanceIndex(i)->instancePosition.z);
 		else
 		m_vbo->GetInstanceIndex(i)->instancePosition = Vector3(m_vbo->GetInstanceIndex(i)->instancePosition.x - 0.1, m_vbo->GetInstanceIndex(i)->instancePosition.y, m_vbo->GetInstanceIndex(i)->instancePosition.z);
-		*/
+		
 	}
 
 	Draw(m_pd3dImmediateContext);

@@ -93,7 +93,7 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 	m_vertexCount = 4;
 
 	// Set the number of instances in the array.
-	m_instanceCount = 100;
+	m_instanceCount = 100000;
 
 	//BREAKS IF INSTANCE COUNT IS GREATER THAN
 
@@ -140,7 +140,7 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 
 	for (int i = 0; i < m_instanceCount; i++)
 	{
-		x += 4.0f;
+		x += 1.0f;
 		iterator++;
 				// Load the instance array with data.
 		m_instances.push_back(new InstanceType());
@@ -150,10 +150,10 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 		m_instances[i]->fudge = XMMatrixIdentity();
 		m_instances[i]->world_matrix = XMMatrixIdentity();
 
-		if (iterator == 100)
+		if (iterator == 316)
 		{
 			iterator = 0;
-			y += 4;
+			y += 2;
 			x = 0;
 		}
 	}

@@ -154,7 +154,7 @@ bool GraphicsHandler::Render()
 	m_Direct3D->GetProjectionMatrix(projectionMatrix);
 
 	// Render the model using the color shader.
-	result = m_shader->Render(m_Direct3D->GetDeviceContext(), 3, 100, worldMatrix, viewMatrix,
+	result = m_shader->Render(m_Direct3D->GetDeviceContext(), 3, 100000, worldMatrix, viewMatrix,
 		projectionMatrix);
 	if (!result)
 	{
