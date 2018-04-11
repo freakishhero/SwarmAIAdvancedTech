@@ -105,14 +105,17 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 	}
 
 	// Load the vertex array with data.
-	vertices[0].position = XMFLOAT3(-1.0f, -1.0f, 0.0f);  // Bottom left.
-	vertices[0].color = XMFLOAT4(0.2f, 2.0f, 0.2f, 1.0f);
+	vertices[0].position = XMFLOAT3(-2.0f, -2.0f, 0.0f);  // Bottom left.
+	vertices[0].color = XMFLOAT4(0.0f, 0.05f, 0.05f, 0.05f);
+	//vertices[0].color = XMFLOAT4(0.2f, 2.0f, 0.2f, 1.0f);
 
-	vertices[1].position = XMFLOAT3(0.0f, 1.0f, 0.0f);  // Top middle.
-	vertices[1].color = XMFLOAT4(0.2f, 0.2f, 2.0f, 1.0f);
+	vertices[1].position = XMFLOAT3(0.0f, 2.0f, 0.0f);  // Top middle.
+	vertices[1].color = XMFLOAT4(0.0f, 0.05f, 0.05f, 0.05f);
+	//vertices[1].color = XMFLOAT4(0.2f, 0.2f, 2.0f, 1.0f);
 
-	vertices[2].position = XMFLOAT3(1.0f, -1.0f, 0.0f);  // Bottom right.
-	vertices[2].color = XMFLOAT4(2.0f, 0.2f, 0.2f, 1.0f);
+	vertices[2].position = XMFLOAT3(2.0f, -2.0f, 0.0f);  // Bottom right.
+	vertices[2].color = XMFLOAT4(0.0f, 0.05f, 0.05f, 0.05f);
+	//vertices[2].color = XMFLOAT4(2.0f, 0.2f, 0.2f, 1.0f);
 
 	// Set up the description of the static vertex buffer.
 	vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
@@ -140,20 +143,18 @@ bool VBObject::InitializeBuffers(ID3D11Device* device)
 
 	for (int i = 0; i < m_instanceCount; i++)
 	{
-		x += 1.0f;
+		x += 4.0f;
 		iterator++;
 				// Load the instance array with data.
 		m_instances.push_back(new InstanceType());
 		m_instances[i]->instancePosition = Vector3(x, y, 0.0f);
 		m_instances[i]->instanceRotation = Vector3(0, 0, 0);
 		m_instances[i]->instanceScale = Vector3(1, 1, 1);
-		m_instances[i]->fudge = XMMatrixIdentity();
-		m_instances[i]->world_matrix = XMMatrixIdentity();
 
 		if (iterator == 316)
 		{
 			iterator = 0;
-			y += 2;
+			y += 4;
 			x = 0;
 		}
 	}

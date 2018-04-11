@@ -15,9 +15,6 @@ struct InstanceType
 	Vector3 instancePosition;
 	Vector3 instanceRotation;
 	Vector3 instanceScale;
-	float movementSpeed;
-	DirectX::XMMATRIX world_matrix;
-	DirectX::XMMATRIX fudge;
 };
 
 class VBObject : public GameObject

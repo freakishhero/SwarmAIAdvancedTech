@@ -2,6 +2,7 @@
 #include <d3d11.h>
 #include <vector>
 #include <DirectXMath.h>
+#include "Vector.h"
 
 class GameObject;
 class VBObject;
@@ -27,4 +28,6 @@ private:
 	ID3D11DeviceContext* m_pd3dImmediateContext;
 	std::vector<GameObject*> m_GameObjects;
 	VBObject* m_vbo;
+	Vector3 m_target_location;
+	bool m_move_to_target;
 };

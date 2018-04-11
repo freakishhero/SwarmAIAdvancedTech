@@ -143,7 +143,8 @@ bool GraphicsHandler::Render()
 	bool result;
 
 	// Clear the buffers to begin the scene.
-	m_Direct3D->BeginScene(0.5f, 0.8f, 0.8f, 1.0f);
+	//m_Direct3D->BeginScene(0.5f, 0.8f, 0.8f, 1.0f);
+	m_Direct3D->BeginScene(0.6f, 0.3f, 0.15f, 1.0f);
 
 	// Generate the view matrix based on the camera's position.
 	m_Camera->Render();
